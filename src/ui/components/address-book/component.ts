@@ -2,7 +2,12 @@ import Component, { tracked } from "@glimmer/component";
 import Contact from '../../../utils/contact';
 
 export default class AddressBook extends Component {
-  @tracked contacts = generateContacts()
+  @tracked contacts = generateContacts();
+  @tracked selectedContact: Contact;
+
+  onSelect(contact) {
+    this.selectedContact = contact;
+  }
 }
 
 function generateContacts() {

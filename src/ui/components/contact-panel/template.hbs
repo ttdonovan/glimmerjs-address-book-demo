@@ -1,0 +1,13 @@
+<section class="contact-panel">
+  {{#if @contact}}
+    {{#if editing}}
+      <contact-edit @contact={{@contact}} />
+      <button class="btn btn-primary" onclick={{action doneEdit}}>Done</button>
+    {{else}}
+      <contact-show @contact={{@contact}} />
+      <button class="btn btn-primary" onclick={{action beginEdit}}>Edit</button>
+    {{/if}}
+  {{else}}
+    <i>Select a contact from the list.</i>
+  {{/if}}
+</section>
