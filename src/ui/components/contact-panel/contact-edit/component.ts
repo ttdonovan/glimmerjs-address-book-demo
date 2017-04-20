@@ -6,13 +6,21 @@ export default class ContactEdit extends Component {
   args: { contact: Contact };
 
   @tracked private model: any = {
-    firstName: "",
-    lastName: ""
+    firstName: this.args.contact.firstName,
+    lastName: this.args.contact.lastName
+  }
+  private lastContact: Contact = this.args.contact;
+
+  didUpdate() {
+    if (this.args.contact !== this.lastContact) {
+      this.model.firstName = this.args.contact.firstName;
+      this.model.lastName = this.args.contact.lastName;
+      this.lastContact = this.args.contact;
+    }
   }
 
   @tracked("args")
   get firstName(): string {
-    this.model.firstName = this.args["contact"].firstName
     return this.model.firstName;
   }
 
@@ -23,7 +31,6 @@ export default class ContactEdit extends Component {
 
   @tracked("args")
   get lastName(): string {
-    this.model.lastName = this.args["contact"].lastName
     return this.model.lastName;
   }
 
@@ -32,7 +39,7 @@ export default class ContactEdit extends Component {
     return this.model.lastName.length;
   }
 
-  @tracked ("model")
+  @tracked("model")
   get stringifiedModel(): string {
     // why does this value not get updated from `handleEditKeyUp`?
     return JSON.stringify(this.model);
@@ -45,7 +52,7 @@ export default class ContactEdit extends Component {
     this.model[name] = value;
 
     console.log("before:", this.model);
-    this.model = {...this.model};
+    this.model = this.model;
     console.log("after:", this.model);
   }
 }
