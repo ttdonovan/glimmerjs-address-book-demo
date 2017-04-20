@@ -1,6 +1,8 @@
 import Component, { tracked } from "@glimmer/component";
 import Contact from '../../../utils/contact';
 
+declare var faker : any;
+
 export default class AddressBook extends Component {
   @tracked contacts = generateContacts();
   @tracked selectedContact: Contact;
@@ -12,7 +14,9 @@ export default class AddressBook extends Component {
 
 function generateContacts() {
   return [
-    new Contact("John", "Smith"),
-    new Contact("Jane", "Doe")
+    new Contact(faker.name.firstName(), faker.name.lastName()),
+    new Contact(faker.name.firstName(), faker.name.lastName()),
+    new Contact(faker.name.firstName(), faker.name.lastName()),
+    new Contact(faker.name.firstName(), faker.name.lastName())
   ];
 }
