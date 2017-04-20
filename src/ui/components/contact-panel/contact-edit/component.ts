@@ -15,11 +15,13 @@ export default class ContactEdit extends Component {
     if (this.args.contact !== this.lastContact) {
       this.model.firstName = this.args.contact.firstName;
       this.model.lastName = this.args.contact.lastName;
+
       this.lastContact = this.args.contact;
+      this.model = this.model;
     }
   }
 
-  @tracked("args")
+  @tracked("model")
   get firstName(): string {
     return this.model.firstName;
   }
@@ -29,7 +31,7 @@ export default class ContactEdit extends Component {
     return this.model["firstName"].length;
   }
 
-  @tracked("args")
+  @tracked("model")
   get lastName(): string {
     return this.model.lastName;
   }
@@ -41,7 +43,6 @@ export default class ContactEdit extends Component {
 
   @tracked("model")
   get stringifiedModel(): string {
-    // why does this value not get updated from `handleEditKeyUp`?
     return JSON.stringify(this.model);
   }
 
@@ -50,9 +51,6 @@ export default class ContactEdit extends Component {
     const value = event.target.value.trim();
 
     this.model[name] = value;
-
-    console.log("before:", this.model);
     this.model = this.model;
-    console.log("after:", this.model);
   }
 }
