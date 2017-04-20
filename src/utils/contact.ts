@@ -9,8 +9,8 @@ export default class Contact {
     this.lastName = lastName;
   }
 
-  @tracked('firstName', 'lastName')
+  @tracked("firstName", "lastName")
   get fullName() {
-    return `${this.firstName} ${this.lastName}`
+    return `${this.firstName} ${this.lastName}`;
   }
 }
