@@ -5,31 +5,37 @@ import Contact from "../../../../utils/contact";
 export default class ContactEdit extends Component {
   args: { contact: Contact };
 
-  @tracked model: any = {
+  @tracked private model: any = {
     firstName: "",
     lastName: ""
-  };
+  }
 
   @tracked("args")
-  get firstName() {
+  get firstName(): string {
     this.model.firstName = this.args["contact"].firstName
     return this.model.firstName;
   }
 
   @tracked("model")
-  get firstNameLength() {
-    return this.model.firstName.length;
+  get firstNameLength(): number {
+    return this.model["firstName"].length;
   }
 
   @tracked("args")
-  get lastName() {
+  get lastName(): string {
     this.model.lastName = this.args["contact"].lastName
     return this.model.lastName;
   }
 
   @tracked("model")
-  get lastNameLength() {
+  get lastNameLength(): number {
     return this.model.lastName.length;
+  }
+
+  @tracked ("model")
+  get stringifiedModel(): string {
+    // why does this value not get updated from `handleEditKeyUp`?
+    return JSON.stringify(this.model);
   }
 
   handleEditKeyUp(event): void {
@@ -37,6 +43,9 @@ export default class ContactEdit extends Component {
     const value = event.target.value.trim();
 
     this.model[name] = value;
+
+    console.log("before:", this.model);
     this.model = {...this.model};
+    console.log("after:", this.model);
   }
 }
