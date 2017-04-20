@@ -26,5 +26,10 @@
   "engines": {
     "node": ">= 4.0"
   },
-  "private": true
+  "private": true,
+  "dependencies": {
+    "faker": "^4.1.0",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0"
+  }
 }
