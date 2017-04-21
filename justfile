@@ -24,7 +24,7 @@ lint:
 
 # count non-empty lines of code
 sloc:
-    @cat src/**/*.ts | sed '/^\s*$/d' | wc -l
+    @find ./src -type f -name "*.ts" -o -name "*.hbs" -o -name "*.scss" -o -name "*.html" | xargs cat | sed '/^\s*$/d' | wc -l
 
 # cleans the project
 @clean:

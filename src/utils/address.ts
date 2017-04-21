@@ -1,11 +1,11 @@
 import { tracked } from "@glimmer/component";
 
 export default class Address {
-  @tracked line1: string;
-  @tracked line2: string;
-  @tracked city: string;
-  @tracked state: string;
-  @tracked postal: string;
+  @tracked public line1: string;
+  @tracked public line2: string;
+  @tracked public city: string;
+  @tracked public state: string;
+  @tracked public postal: string;
 
   constructor(line1: string, line2: string, city: string, state: string, postal: string) {
     this.line1 = line1;

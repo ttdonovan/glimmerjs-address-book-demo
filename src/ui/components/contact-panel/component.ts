@@ -2,19 +2,19 @@ import Component, { tracked } from "@glimmer/component";
 import Contact from "../../../utils/contact";
 
 export default class ContactPanel extends Component {
-  args: { contact: Contact };
+  public args: { contact: Contact };
 
   @tracked private editing: boolean = false;
 
-  beginEdit(): void {
+  private beginEdit(): void {
     this.editing = true;
   }
 
-  abortEdit(): void {
+  private abortEdit(): void {
     this.editing = false;
   }
 
-  commitEdit(contact: Contact, options: any): void {
+  private commitEdit(contact: Contact, options: any): void {
     contact.firstName = options.firstName;
     contact.lastName = options.lastName;
     contact.address.line1 = options.addressLine1;

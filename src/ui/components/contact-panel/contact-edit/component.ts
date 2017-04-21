@@ -3,26 +3,26 @@ import Component, { tracked } from "@glimmer/component";
 import Contact from "../../../../utils/contact";
 
 export default class ContactEdit extends Component {
-  args: {
+  public args: {
     contact: Contact
-    onSave: (Contact, any) => void;
+    onSave: (Contact, options: any) => void;
     onCancel: () => void;
   };
 
   @tracked private model: any = {
-    firstName: this.args.contact.firstName,
-    lastName: this.args.contact.lastName,
+    addressCity: this.args.contact.address.city,
     addressLine1: this.args.contact.address.line1,
     addressLine2: this.args.contact.address.line2,
-    addressCity: this.args.contact.address.city,
+    addressPostal: this.args.contact.address.postal,
     addressState: this.args.contact.address.state,
-    addressPostal: this.args.contact.address.postal
-  }
+    firstName: this.args.contact.firstName,
+    lastName: this.args.contact.lastName,
+  };
 
   private currentContact: Contact = this.args.contact;
   @tracked private errorMessages: string;
 
-  didUpdate() {
+  public didUpdate(): void {
     if (this.args.contact !== this.currentContact) {
       const contact = this.args.contact;
 
@@ -89,14 +89,15 @@ export default class ContactEdit extends Component {
     return JSON.stringify(this.model);
   }
 
-  commitSave() {
-    if (this.firstName || this.lastName)
+  private commitSave(): void {
+    if (this.firstName || this.lastName) {
       this.args.onSave(this.currentContact, this.model);
-    else
+    } else {
       this.errorMessages = "Please enter a first and/or last name.";
+    }
   }
 
-  handleEditKeyUp(event): void {
+  private handleEditKeyUp(event): void {
     const name = event.target.name;
     const value = event.target.value.trim();
 

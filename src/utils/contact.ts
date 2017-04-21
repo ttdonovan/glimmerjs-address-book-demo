@@ -3,9 +3,9 @@ import { tracked } from "@glimmer/component";
 import Address from "./address";
 
 export default class Contact {
-  @tracked firstName: string;
-  @tracked lastName: string;
-  @tracked address: Address;
+  @tracked public firstName: string;
+  @tracked public lastName: string;
+  @tracked public address: Address;
 
   constructor(firstName: string, lastName: string, address: Address) {
     this.firstName = firstName;
