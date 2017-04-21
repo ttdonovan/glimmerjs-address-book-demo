@@ -1,4 +1,9 @@
 <section class="contact-edit">
+  {{#if errorMessages}}
+    <div class="alert alert-danger" role="alert">
+      <strong>Oh snap!</strong> {{errorMessages}}
+    </div>
+  {{/if}}
   <form>
     <div class="form-group">
       <input type="text" class="form-control" placeholder="First Name"

@@ -15,6 +15,7 @@ export default class ContactEdit extends Component {
   }
 
   private currentContact: Contact = this.args.contact;
+  @tracked private errorMessages: string;
 
   didUpdate() {
     if (this.args.contact !== this.currentContact) {
@@ -54,7 +55,10 @@ export default class ContactEdit extends Component {
   }
 
   commitSave() {
-    this.args.onSave(this.currentContact, this.model);
+    if (this.firstName || this.lastName)
+      this.args.onSave(this.currentContact, this.model);
+    else
+      this.errorMessages = "Please enter a first and/or last name.";
   }
 
   handleEditKeyUp(event): void {
