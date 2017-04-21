@@ -1,8 +1,9 @@
 <section class="contact-panel">
   {{#if @contact}}
     {{#if editing}}
-      <contact-edit @contact={{@contact}} />
-      <button class="btn btn-primary" onclick={{action doneEdit}}>Done</button>
+      <contact-edit @contact={{@contact}}
+                    @onCancel={{action abortEdit}}
+                    @onSave={{action commitEdit}} />
     {{else}}
       <contact-show @contact={{@contact}} />
       <button class="btn btn-primary" onclick={{action beginEdit}}>Edit</button>

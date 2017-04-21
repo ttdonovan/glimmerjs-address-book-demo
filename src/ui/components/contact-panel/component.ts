@@ -4,13 +4,19 @@ import Contact from "../../../utils/contact";
 export default class ContactPanel extends Component {
   args: { contact: Contact };
 
-  @tracked editing: boolean = false;
+  @tracked private editing: boolean = false;
 
-  beginEdit() {
+  beginEdit(): void {
     this.editing = true;
   }
 
-  doneEdit() {
+  abortEdit(): void {
+    this.editing = false;
+  }
+
+  commitEdit(contact: Contact, options: any): void {
+    contact.firstName = options.firstName;
+    contact.lastName = options.lastName;
     this.editing = false;
   }
 }
