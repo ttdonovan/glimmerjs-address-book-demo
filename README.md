@@ -28,6 +28,11 @@ You will need the following things properly installed on your computer.
 * `ember build` (development)
 * `ember build --environment production` (production)
 
+### Deploying
+
+* `ember deploy production`
+* Visit your app at [https://ttdonovan.github.io/glimmerjs-address-book-demo/](https://ttdonovan.github.io/glimmerjs-address-book-demo/).
+
 ## Further Reading / Useful Links
 
 * [glimmerjs](http://github.com/tildeio/glimmer/)
