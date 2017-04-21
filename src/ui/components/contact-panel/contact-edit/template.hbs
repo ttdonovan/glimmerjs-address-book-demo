@@ -16,10 +16,38 @@
       <small class="form-text text-muted">Length: {{lastNameLength}}</small>
     </div>
     <div class="form-group">
-      <code>{{stringifiedModel}}</code>
+      <input type="text" class="form-control" placeholder="Address Line 1"
+             name="addressLine1" value={{addressLine1}} onkeyup={{action handleEditKeyUp}} />
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Address Line 2"
+             name="addressLine2" value={{addressLine2}} onkeyup={{action handleEditKeyUp}} />
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="City"
+             name="addressCity" value={{addressCity}} onkeyup={{action handleEditKeyUp}} />
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="State"
+             name="addressState" value={{addressState}} onkeyup={{action handleEditKeyUp}} />
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Postal Code"
+             name="addressPostal" value={{addressPostal}} onkeyup={{action handleEditKeyUp}} />
     </div>
   </form>
 
-  <button class="btn btn-primary" onclick={{action commitSave}}>Save</button>
-  <button class="btn btn btn-secondary" onclick={{action @onCancel}}>Cancel</button>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary" onclick={{action commitSave}}>Save</button>
+      <button class="btn btn btn-secondary" onclick={{action @onCancel}}>Cancel</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <br/>
+      <code>{{stringifiedModel}}</code>
+    </div>
+  </div>
 </section>
