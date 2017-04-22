@@ -4,8 +4,19 @@ import Address from "./address";
 import Contact from "./contact";
 
 export default class ContactStore {
+
+  public build(): Contact {
+    const address = new Address("", "", "", "", "");
+    return new Contact("", "", address);
+  }
+
   public fetch(): Contact[] {
+    // fetch a list of contacts from `localStorage` or remote server
     return generateContacts();
+  }
+
+  public store(contact: Contact): void {
+    // store the contact in `localStorage` or remote server
   }
 }
 

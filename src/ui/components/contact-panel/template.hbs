@@ -6,9 +6,11 @@
                     @onSave={{action commitEdit}} />
     {{else}}
       <contact-show @contact={{@contact}} />
+      <button class="btn btn-primary" onclick={{action newEdit}}>Add</button>
       <button class="btn btn-primary" onclick={{action beginEdit}}>Edit</button>
     {{/if}}
   {{else}}
-    <i>Select a contact from the list.</i>
+    <p><i>Add your first contact.</i></p>
+    <button class="btn btn-primary" onclick={{action newEdit}}>Add</button>
   {{/if}}
 </section>
