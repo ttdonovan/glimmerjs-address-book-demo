@@ -34,7 +34,7 @@ export default class AddressBook extends Component {
     contact.address.state = options.addressState;
     contact.address.postal = options.addressPostal;
 
-    if !this.contacts.includes(contact) {
+    if !(this.contacts.includes(contact)) {
       this.contacts.push(contact);
       this.contacts = this.contacts;
     }
